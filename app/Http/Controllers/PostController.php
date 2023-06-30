@@ -21,8 +21,10 @@ class PostController extends Controller
         
     public function show(Post $post)
         {
+            dd($post);
             return view('posts.show')->with(['post' => $post]);
          //'post'はbladeファイルで使う変数。中身は$postはid=1のPostインスタンス。
+         
         }
         
         
@@ -53,6 +55,12 @@ class PostController extends Controller
         
             return redirect('/posts/' . $post->id);
         }
+        
+    public function delete(Post $post)
+    {
+        $post->delete();
+        return redirect('/');
+    }
     
     
 }
